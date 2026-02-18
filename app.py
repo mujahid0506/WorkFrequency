@@ -8,6 +8,9 @@ CORS(app)
 MONGO_URI = os.environ.get("MONGO_URI")
 client = MongoClient(MONGO_URI)
 db = client["production"]
+@app.route("/")
+def home():
+    return "Backend is working successfully 🚀"
 
 # ================= GLOBAL STATE =================
 def init_esp(esp_id):
