@@ -76,6 +76,10 @@ def get_graph_data(esp_id):
     current_data, previous_data = [], []
 
     for row in cursor:
+        # Convert datetime to string
+        if "timestamp" in row and isinstance(row["timestamp"], datetime):
+            row["timestamp"] = row["timestamp"].isoformat()
+
         if row["shift"] == current_shift:
             current_data.append(row)
         else:
